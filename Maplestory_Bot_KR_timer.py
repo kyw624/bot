@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import os
 import time
 import discord
 from datetime import datetime
@@ -17,4 +18,5 @@ async def on_ready():
         else:
             time.sleep(1)  # 1초 후 재탐색
 
-client.run('NjQwMTc1NTg2MzkxODgzODI2.Xb2AAw.Wh3qikBeKktS_NyqSHp56ybvotQ')  # 봇의 토큰 입력
+access_token = os.environ["BOT_TOKEN"]
+client.run(access_token)  # 봇의 토큰 입력
