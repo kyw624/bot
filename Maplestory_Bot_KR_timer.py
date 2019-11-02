@@ -1,0 +1,20 @@
+#!/usr/bin/env python3
+
+import time
+import discord
+from datetime import datetime
+
+client = discord.Client()
+
+
+@client.event
+async def on_ready():
+    while True:
+        now = datetime.now().minute
+        if now == 29 or now == 59:  # 알림을 받을 시간 지정
+            await client.get_channel(640176809752920065).send("경뿌 1분 전")  # 보낼 메시지 설정
+            time.sleep(60)  # 60초 후 재탐색
+        else:
+            time.sleep(1)  # 1초 후 재탐색
+
+client.run('NjQwMTc1NTg2MzkxODgzODI2.Xb2AAw.Wh3qikBeKktS_NyqSHp56ybvotQ')  # 봇의 토큰 입력
