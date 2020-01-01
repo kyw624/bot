@@ -12,7 +12,7 @@ channels = [640176809752920065, 640875475291602974]
 async def on_ready():
     while True:
         now = datetime.utcnow().minute
-        if now == 9 or now == 10:  # 알림을 받을 시간 지정
+        if now == 11 or now == 12:  # 알림을 받을 시간 지정
             for i in channels:
                 await client.get_channel(i).send("버그 테스트")
             time.sleep(60)  # 60초 후 재탐색
