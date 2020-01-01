@@ -11,8 +11,9 @@ client = discord.Client()
 async def on_ready():
     while True:
         now = datetime.utcnow().minute
-        if now == 43 or now == 42:  # 알림을 받을 시간 지정
-            await client.get_channel(640176809752920065).send("get_channel ")  # 보낼 메시지 설정
+        if now == 44 or now == 45:  # 알림을 받을 시간 지정
+            await client.get_channel(640176809752920065).send("테스트")  # 보낼 메시지 설정
+            await client.get_channel(640875475291602974).send("테스트")
             time.sleep(60)  # 60초 후 재탐색
         else:
             time.sleep(1)  # 1초 후 재탐색
