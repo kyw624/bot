@@ -13,8 +13,7 @@ async def on_ready():
     while True:
         now = datetime.utcnow().minute
         if now == 19 or now == 20:  # 알림을 받을 시간 지정
-            client.get_channel(channels[0]).send("버그 테스트")
-            client.get_channel(channels[1]).send("버그 테스트")
+            await client.get_channel(channels[0]).send("버그 테스트")
             time.sleep(60)  # 60초 후 재탐색
         else:
             time.sleep(1)  # 1초 후 재탐색
