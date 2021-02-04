@@ -134,10 +134,11 @@ async def on_message(message):
     guild = message.guild
     author = message.author
     channel = message.channel
-    if content.startswith("!test"):
-        await message.channel.send("test" + message.content)
-    if content == "!ping":
-        await message.channel.send("Pong!")
+    if content == '!test':
+        while (num < 10):
+            await message.channels[2].send('테스트 메시지 >> ' + num)
+            num += 1
+        print('테스트 종료!! ' + num)
 
 
 # async def on_message(message):
