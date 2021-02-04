@@ -13,8 +13,8 @@ channels = [640176809752920065, 640875475291602974, 806430821903892540]
 
 @client.event
 # 메이플 경뿌 알림
-"""
 async def on_ready():
+    """
     while True:
         now = datetime.utcnow().minute
         if now == 29 or now == 59:  # 알림을 받을 시간 지정
@@ -23,7 +23,7 @@ async def on_ready():
             time.sleep(60)  # 60초 후 재탐색
         else:
             time.sleep(1)  # 1초 후 재탐색
-"""
+    """
 
 # 플리 자동추가 테스트용
 playlist = ["-p https://www.youtube.com/watch?v=Md_I9quMmlE",
