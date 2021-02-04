@@ -131,17 +131,16 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    content = message.content
+    channel = message.channel
     if message.author.bot:
         return None
-    if message.content.startswith("!test"):
-        await message.channel.send("테스트 메시지")
-    if message.content == "!loop":
-        num = 1
-        await message.channel.send('테스트 시작 >> ' + num)
-        while (num < 10):
-            await message.channel.send('테스트 메시지 >> ' + num)
-            num += 1
-        await message.channel.send('테스트 종료!! ' + num)
+    if content.startswith("!test"):
+        await channel.send("테스트 메시지")
+    if content == "!주":
+        await channel.send(성)
+        for i in range(10):
+            await channel.send(i)
 
 
 # async def on_message(message):
