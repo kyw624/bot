@@ -1,7 +1,3 @@
-#!/usr/bin/env python3
-
-#!/usr/bin/env python3
-
 import os
 import time
 import discord
@@ -9,7 +5,7 @@ from datetime import datetime
 # 플리 자동추가 테스트용
 from discord.ext import commands
 
-bot = commands.Bot(command_prefix='.!')
+bot = commands.Bot(command_prefix='~!')
 channels = [640176809752920065, 640875475291602974, 806430821903892540]
 
 """
@@ -128,15 +124,16 @@ playlist = ["-p https://www.youtube.com/watch?v=Md_I9quMmlE",
 
 @bot.event
 async def on_ready():
-    await message.channels[2].send('Hi')
+    await client.change_presence(status=discord.Status.online, activity=discord.Game('Test bot'))
+    print("Bot status :: online")
 
-@bot.command(name = 'test')
+@bot.command(name='test')
 async def add_list(ctx):
     num = 1
     while (num < 10):
-        await message.channels[2].send('테스트 메시지 >> ' + num)
+        await ctx.send('테스트 메시지 >> ' + num)
         num += 1
-    print('테스트 종료!! ' + num)
+    await ctx.send('테스트 메시지 >> ' + num)
 
 
 # async def on_message(message):
