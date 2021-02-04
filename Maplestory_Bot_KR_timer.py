@@ -136,8 +136,10 @@ async def on_message(message):
         return None
     if message.content.startswith("!test"):
         await channel.send("테스트 메시지")
-    if message.content == "!주":
-        await channel.send("성")
+    if message.content == "!플리":
+        for music in playlist:
+            await channel.send(music)
+            time.sleep(2)
 
 
 # async def on_message(message):
