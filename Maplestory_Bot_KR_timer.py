@@ -131,16 +131,13 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    content = message.content
     channel = message.channel
     if message.author.bot:
         return None
-    if content.startswith("!test"):
+    if message.content.startswith("!test"):
         await channel.send("테스트 메시지")
-    if content == "!주":
-        await channel.send(성)
-        for i in range(10):
-            await channel.send(i)
+    if message.content == "!주":
+        await channel.send("성")
 
 
 # async def on_message(message):
