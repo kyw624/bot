@@ -124,7 +124,7 @@ playlist = ["-p https://www.youtube.com/watch?v=Md_I9quMmlE",
 
 @bot.event
 async def on_ready():
-    await client.change_presence(status=discord.Status.online, activity=discord.Game('Test bot'))
+    await bot.change_presence(status=discord.Status.online, activity=discord.Game('Test bot'))
     print("Bot status :: online")
 
 @bot.command(name='test')
