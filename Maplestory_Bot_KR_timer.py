@@ -1,11 +1,13 @@
 import os
 import time
 import discord
+import asyncio
 from datetime import datetime
 # 플리 자동추가 테스트용
 from discord.ext import commands
+from discord.ext.commands import Bot
 
-client = commands.Bot(command_prefix = '~!')
+client = discord.Client()
 channels = [640176809752920065, 640875475291602974, 806430821903892540]
 
 """
@@ -122,18 +124,20 @@ playlist = ["-p https://www.youtube.com/watch?v=Md_I9quMmlE",
 "-p https://www.youtube.com/watch?v=i71ee1R8GYc",
 "-p https://www.youtube.com/watch?v=S5r69y_OHiA"]
 
-@client.event()
+@client.event
 async def on_ready():
-    await client.change_presence(status=discord.Status.online, activity=discord.Game('Test bot'))
     print("Bot status :: online")
 
-@client.command()
-async def test(ctx):
-    num = 1
-    while (num < 10):
-        await ctx.send('테스트 메시지 >> ' + num)
-        num += 1
-    await ctx.send('테스트 종료 >> ' + num)
+@client.event
+async def on_message(message):
+    content = message.content
+    guild = message.guild
+    author = message.author
+    channel = message.channel
+    if content.startswith("!test"):
+        await message.channel.send("test" + message.content)
+    if content == "!ping":
+        await message.channel.send("Pong!")
 
 
 # async def on_message(message):
