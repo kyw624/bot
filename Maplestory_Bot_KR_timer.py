@@ -131,13 +131,11 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    content = message.content
-    guild = message.guild
-    author = message.author
-    channel = message.channel
-    if content.startswith("!test"):
+    if message.author.bot:
+        return None
+    if message.content.startswith("!test"):
         await message.channel.send("테스트 메시지")
-    if content == "!loop":
+    if message.content == "!loop":
         num = 1
         await message.channel.send('테스트 시작 >> ' + num)
         while (num < 10):
