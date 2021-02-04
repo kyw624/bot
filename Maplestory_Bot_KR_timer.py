@@ -126,8 +126,8 @@ playlist = ["-p https://www.youtube.com/watch?v=Md_I9quMmlE",
 
 @client.event
 async def on_ready():
-    await client.change_presence(status=discord.Status.online)
-    print("Bot status :: online")
+    await client.change_presence(status=discord.Status.online, activity=discord.Game("플리쿤"))
+
 
 @client.event
 async def on_message(message):
@@ -136,7 +136,7 @@ async def on_message(message):
     author = message.author
     channel = message.channel
     if content == '!test':
-        num =
+        num = 1
         while (num < 10):
             await message.channel.send('테스트 메시지 >> ' + num)
             num += 1
