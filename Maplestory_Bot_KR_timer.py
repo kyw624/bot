@@ -1,21 +1,22 @@
 #!/usr/bin/env python3
 
+#!/usr/bin/env python3
+
 import os
 import time
 import discord
 from datetime import datetime
 # 플리 자동추가 테스트용
 from discord.ext import commands
-from discord.ext.commands import Bot
 
-client = discord.Client()
+bot = commands.Bot(command_prefix='.!')
 channels = [640176809752920065, 640875475291602974, 806430821903892540]
 
+"""
 @client.event
 # 메이플 경뿌 알림
 async def on_ready():
-    await message.channels[2].send('hi')
-    """
+
     while True:
         now = datetime.utcnow().minute
         if now == 29 or now == 59:  # 알림을 받을 시간 지정
@@ -24,7 +25,7 @@ async def on_ready():
             time.sleep(60)  # 60초 후 재탐색
         else:
             time.sleep(1)  # 1초 후 재탐색
-    """
+"""
 
 # 플리 자동추가 테스트용
 playlist = ["-p https://www.youtube.com/watch?v=Md_I9quMmlE",
@@ -125,18 +126,32 @@ playlist = ["-p https://www.youtube.com/watch?v=Md_I9quMmlE",
 "-p https://www.youtube.com/watch?v=i71ee1R8GYc",
 "-p https://www.youtube.com/watch?v=S5r69y_OHiA"]
 
-async def on_message(message):
-    content = message.content
+@bot.event
+async def on_ready():
+    await message.channels[2].send('Hi')
+
+@bot.command(name = 'test')
+async def add_list(ctx):
     num = 1
-    if content == "!플리":
-        for music in playlist:
-            await message.channels[2].send(music)
-            time.sleep(2)
-    if content == '!test':
-        while (num < 10):
-            await message.channels[2].send('테스트 메시지 >> ' + num)
-            num += 1
-        print('테스트 종료!! ' + num)
+    while (num < 10):
+        await message.channels[2].send('테스트 메시지 >> ' + num)
+        num += 1
+    print('테스트 종료!! ' + num)
+
+
+# async def on_message(message):
+#     content = message.content
+#     num = 1
+#     if content == "!플리":
+#         for music in playlist:
+#             await message.channels[2].send(music)
+#             time.sleep(2)
+#     if content == '!test':
+#         while (num < 10):
+#             await message.channels[2].send('테스트 메시지 >> ' + num)
+#             num += 1
+#         print('테스트 종료!! ' + num)
             
 access_token = os.environ["BOT_TOKEN"]
-client.run(access_token)  # 봇의 토큰 입력
+bot.run(access_token)
+# client.run(access_token)  # 봇의 토큰 입력
