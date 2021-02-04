@@ -14,6 +14,7 @@ channels = [640176809752920065, 640875475291602974, 806430821903892540]
 @client.event
 # 메이플 경뿌 알림
 async def on_ready():
+    await message.channels[2].send('hi')
     """
     while True:
         now = datetime.utcnow().minute
