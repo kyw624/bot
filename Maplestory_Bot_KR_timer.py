@@ -5,7 +5,7 @@ from datetime import datetime
 # 플리 자동추가 테스트용
 from discord.ext import commands
 
-bot = commands.Bot(command_prefix='~!')
+client = commands.Bot(command_prefix = '~!')
 channels = [640176809752920065, 640875475291602974, 806430821903892540]
 
 """
@@ -122,18 +122,18 @@ playlist = ["-p https://www.youtube.com/watch?v=Md_I9quMmlE",
 "-p https://www.youtube.com/watch?v=i71ee1R8GYc",
 "-p https://www.youtube.com/watch?v=S5r69y_OHiA"]
 
-@bot.event
+@client.event()
 async def on_ready():
-    await bot.change_presence(status=discord.Status.online, activity=discord.Game('Test bot'))
+    await client.change_presence(status=discord.Status.online, activity=discord.Game('Test bot'))
     print("Bot status :: online")
 
-@bot.command(name='test')
-async def add_list(ctx):
+@client.command()
+async def test(ctx):
     num = 1
     while (num < 10):
         await ctx.send('테스트 메시지 >> ' + num)
         num += 1
-    await ctx.send('테스트 메시지 >> ' + num)
+    await ctx.send('테스트 종료 >> ' + num)
 
 
 # async def on_message(message):
@@ -150,5 +150,4 @@ async def add_list(ctx):
 #         print('테스트 종료!! ' + num)
             
 access_token = os.environ["BOT_TOKEN"]
-bot.run(access_token)
-# client.run(access_token)  # 봇의 토큰 입력
+client.run(access_token)  # 봇의 토큰 입력
