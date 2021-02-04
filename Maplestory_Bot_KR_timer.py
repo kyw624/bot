@@ -135,8 +135,11 @@ async def on_message(message):
     guild = message.guild
     author = message.author
     channel = message.channel
-    if content == '!test':
+    if content.startswith("!test"):
+        await message.channel.send("테스트 메시지")
+    if content == "!loop":
         num = 1
+        await message.channel.send('테스트 시작 >> ' + num)
         while (num < 10):
             await message.channel.send('테스트 메시지 >> ' + num)
             num += 1
